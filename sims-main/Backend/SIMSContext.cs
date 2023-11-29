@@ -1,5 +1,5 @@
 ﻿using System;
-using Microsoft.EntityFrameworkCore; 
+using Microsoft.EntityFrameworkCore;
 
 namespace SIMS_Backend
 {
@@ -14,23 +14,35 @@ namespace SIMS_Backend
         public DbSet<Notification> Notifications { get; set; }
         //public DbSet<IssueSystem> IssueSystem {get;set;}
 
+
+        public SIMSContext()
+        {
+        }
+
+        public SIMSContext(DbContextOptions<SIMSContext> options) : base(options)
+        {
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            if (!optionsBuilder.IsConfigured)
+            {
 #if DEBUG
-            IConfigurationRoot config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
-            IConfigurationProvider secretProvider = config.Providers.First();
-            secretProvider.TryGet("ConnectionString", out var ConnString);
+                IConfigurationRoot config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
+                IConfigurationProvider secretProvider = config.Providers.First();
+                secretProvider.TryGet("ConnectionString", out var ConnString);
 #else
-           string ConnString = Environment.GetEnvironmentVariable("BackendDbConnectionString");
+        string ConnString = Environment.GetEnvironmentVariable("BackendDbConnectionString");
 #endif
-            optionsBuilder.UseSqlServer(ConnString);
+                optionsBuilder.UseSqlServer(ConnString);
+            }
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             modelBuilder.Entity<Issue>()
-           .HasMany(i => i.AffectedSystems)
-           .WithMany();
+                .HasMany(i => i.AffectedSystems)
+                .WithMany();
 
             //modelBuilder.Entity<IssueSystem>()
             //    .HasKey(issy => new { issy.IssueID, issy.SystemID });
@@ -44,9 +56,6 @@ namespace SIMS_Backend
             //    .HasOne(issy => issy.System)
             //    .WithMany(s => s.Issues)
             //    .HasForeignKey(issy => issy.SystemID);
-
         }
-
     }
 }
-
