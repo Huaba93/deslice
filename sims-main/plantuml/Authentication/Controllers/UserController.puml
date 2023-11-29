@@ -1,0 +1,9 @@
+@startuml
+class UserController {
+    + Get() : List<User>
+    + GetUserbyID(id:int, authToken:string) : IActionResult
+    + CreateUser(user:CreateUserDTO) : IActionResult
+    + DeleteUser(id:int) : IActionResult
+}
+ControllerBase <|-- UserController
+@enduml

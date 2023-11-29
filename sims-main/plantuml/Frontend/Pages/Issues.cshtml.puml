@@ -1,0 +1,20 @@
+@startuml
+class IssueModel {
+    + cveLink : string = "https://cve.mitre.org/cgi-bin/cvename.cgi?name="
+    + OnGet() : IActionResult
+    + OnPost() : IActionResult
+    + <<async>> OnPostRedis(respObj:RedisRespObj) : void
+    + IssueModel(cache:IDistributedCache)
+}
+class "List`1"<T> {
+}
+class RedisRespObj {
+    + name : string <<get>> <<set>>
+    + value : string <<get>> <<set>>
+}
+PageModel <|-- IssueModel
+IssueModel --> "issues<Issue>" "List`1"
+IssueModel --> "newIssue" Issue
+IssueModel --> "employees<Employee>" "List`1"
+IssueModel +-- RedisRespObj
+@enduml

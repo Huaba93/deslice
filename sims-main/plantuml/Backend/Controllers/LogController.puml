@@ -1,0 +1,6 @@
+@startuml
+class LogController {
+    + GetLastLogs(count:int?) : List<Logs>
+}
+ControllerBase <|-- LogController
+@enduml

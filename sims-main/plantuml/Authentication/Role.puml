@@ -1,0 +1,14 @@
+@startuml
+class Role {
+    + RoleID : int <<get>> <<set>>
+    + Name : string <<get>> <<set>>
+    + Perm : int <<get>> <<set>>
+}
+enum Permissions {
+    None= 0,
+    Read= 1,
+    Write= 2,
+    Assign= 4,
+}
+Role +-- Permissions
+@enduml

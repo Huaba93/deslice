@@ -1,0 +1,16 @@
+@startuml
+class Authentication {
+    + {static} GetPubKey(force:bool) : string
+    + {static} VerifyJWT(token:string) : AuthObj
+    + {static} isAdmin(auth:AuthObj) : bool
+    + Authentication()
+}
+class AuthObj {
+    + tokenValid : bool <<get>> <<set>> = false
+    + userID : int <<get>> <<set>> = 0
+    + roleID : int <<get>> <<set>> = 0
+    + AuthObj(tokenValid:bool)
+    + AuthObj(tokenValid:bool, userID:int, roleID:int)
+    + AuthObj()
+}
+@enduml

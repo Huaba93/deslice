@@ -1,0 +1,24 @@
+@startuml
+class EmployeeService {
+    + {static} GetEmployees(authToken:string) : EmployeeReturnObj
+    + {static} GetEmployee(id:int, authToken:string) : Employee
+}
+class EmployeeReturnObj {
+    + Statuscode : int <<get>> <<set>>
+    + Message : string? <<get>> <<set>>
+    + Employees : List<Employee>? <<get>> <<set>>
+    + EmployeeReturnObj()
+    + EmployeeReturnObj(statuscode:int)
+    + EmployeeReturnObj(statuscode:int, employees:List<Employee>)
+}
+class Employee {
+    + EmployeeID : int <<get>> <<set>>
+    + Uid : int? <<get>> <<set>>
+    + FirstName : string? <<get>> <<set>>
+    + LastName : string? <<get>> <<set>>
+    + Name : string <<get>>
+    + Mail : string? <<get>> <<set>>
+    + Phone : string? <<get>> <<set>>
+    + SuperiorID : int? <<get>> <<set>>
+}
+@enduml

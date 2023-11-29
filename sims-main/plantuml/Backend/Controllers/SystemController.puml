@@ -1,0 +1,26 @@
+@startuml
+class SystemController {
+    + GetSystem() : List<System>
+    + GetSystem(id:int) : IActionResult
+    + CreateSystem(system:System) : IActionResult
+    + UpdateSystem(id:int, system:System) : IActionResult
+    + DeleteSystem(id:int) : IActionResult
+}
+class SystemTypeController {
+    + GetSystemType() : List<Systemtype>
+    + GetSystemType(id:int) : IActionResult
+    + CreateSystemType(systemtype:Systemtype) : IActionResult
+    + UpdateSystemType(id:int, systemtype:Systemtype) : IActionResult
+    + DeleteSystemType(id:int) : IActionResult
+}
+class ManufactorController {
+    + GetManufactor() : List<Manufactor>
+    + GetManufactor(id:int) : IActionResult
+    + CreateManufactor(manufactor:Manufactor) : IActionResult
+    + UpdateManufactor(id:int, manufactor:Manufactor) : IActionResult
+    + DeleteManufactor(id:int) : IActionResult
+}
+ControllerBase <|-- SystemController
+Controller <|-- SystemTypeController
+Controller <|-- ManufactorController
+@enduml

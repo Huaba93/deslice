@@ -1,0 +1,10 @@
+@startuml
+class EmployeeController {
+    + Get(authToken:string) : IActionResult
+    + Get(id:int, authToken:string) : IActionResult
+    + CreateEmployee(employee:Employee) : IActionResult
+    + UpdateEmployee(id:int, employee:Employee) : IActionResult
+    + DeleteEmployee(id:int) : IActionResult
+}
+ControllerBase <|-- EmployeeController
+@enduml

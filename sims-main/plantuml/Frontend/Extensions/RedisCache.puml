@@ -1,0 +1,6 @@
+@startuml
+class DistributedCacheExtensions <<static>> {
+    + {static} <<async>> SetRecordAsync(cache:IDistributedCache, recordId:string, data:T, absoluteExpireTime:TimeSpan?, unusedExpireTime:TimeSpan?) : Task
+    + {static} <<async>> GetRecordAsync(cache:IDistributedCache, recordId:string) : Task<T>
+}
+@enduml

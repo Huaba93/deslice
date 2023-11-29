@@ -1,0 +1,45 @@
+﻿@keyframes borealisBar {
+    0% {
+        width: 0%;
+    }
+
+    25% {
+        width: 25%;
+    }
+
+    50% {
+        width: 50%;
+    }
+
+    75% {
+        width: 75%;
+    }
+    100%{
+        width: 100%;
+    }
+}
+@keyframes borealisBarOrig {
+    0% {
+        left: 0%;
+        right: 100%;
+        width: 0%;
+    }
+
+    10% {
+        left: 0%;
+        right: 75%;
+        width: 25%;
+    }
+
+    90% {
+        right: 0%;
+        left: 75%;
+        width: 25%;
+    }
+
+    100% {
+        left: 100%;
+        right: 0%;
+        width: 0%;
+    }
+}

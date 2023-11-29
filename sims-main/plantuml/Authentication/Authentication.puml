@@ -1,0 +1,23 @@
+@startuml
+class Authentication {
+    + {static} PasswordHash(password:string, salt:byte[]) : string?
+    + {static} VerifyPassword(password:string, hash:string, salt:byte[]) : bool
+    + {static} VerifyJWT(token:string) : bool
+    + {static} GenerateAuthToken(user:User) : string
+    + {static} GenerateECKey() : ECDsa
+    + {static} CurrentUnixTimestamp() : long
+}
+class JwtHeader {
+    + alg : string <<get>> <<set>> = "ES256"
+    + typ : string <<get>> <<set>> = "JWT"
+    + getBase64() : string
+}
+class JwtBody {
+    + iat : long <<get>>
+    + exp : long <<get>> <<set>>
+    + username : string <<get>> <<set>> = ""
+    + userID : int <<get>> <<set>> = 0
+    + roleID : int <<get>> <<set>> = 0
+    + getBase64() : string
+}
+@enduml

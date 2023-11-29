@@ -1,0 +1,9 @@
+@startuml
+class NotificationController {
+    + CreateNotification(notification:NotificationCreation, authToken:string) : IActionResult
+    + GetNotifications(authToken:string) : IActionResult
+    + GetNotificationsForUser(uid:int, authToken:string) : IActionResult
+    + MarkNotification(id:int, authToken:string) : IActionResult
+}
+ControllerBase <|-- NotificationController
+@enduml

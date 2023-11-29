@@ -1,0 +1,43 @@
+@startuml
+class Authentication {
+    + Authentication()
+    + {static} GetAuthServiceURL() : string
+    + {static} PostAuthService(jsonObject:string, PostUri:string, authToken:string?) : ResponseObj
+    + {static} GetAuthService(GetUri:string, authToken:string?) : HttpResponseMessage
+    + {static} GetUserName(UID:int, authtoken:string) : string
+    + {static} GetAuthToken(Username:string, Password:string) : ResponseObj
+    + {static} GetPubKey(force:bool) : string
+    + {static} ReadJwtToken(token:string) : TokenObj
+}
+class AuthObj {
+    + Username : string <<get>> <<set>>
+    + Password : string <<get>> <<set>>
+    + AuthObj(Username:string, Password:string)
+}
+class TokenObj {
+    + isValid : bool <<get>> <<set>> = false
+    + userID : int <<get>> <<set>> = 0
+    + roleID : int <<get>> <<set>> = 0
+    + TokenObj(tokenValid:bool)
+    + TokenObj(tokenValid:bool, userID:int, roleID:int)
+    + TokenObj()
+}
+class ResponseObj {
+    + Response : string? <<get>> <<set>>
+    + Message : string? <<get>> <<set>>
+    + ResponseObj()
+    + ResponseObj(StatusCode:HttpStatusCode)
+    + ResponseObj(StatusCode:HttpStatusCode, Response:string)
+}
+class UserRetObj {
+    + UserID : int <<get>> <<set>>
+    + Firstname : string? <<get>> <<set>>
+    + Lastname : string? <<get>> <<set>>
+    + Username : string? <<get>> <<set>>
+    + Password : string? <<get>> <<set>>
+    + Salt : byte[]? <<get>> <<set>>
+    + RoleID : int <<get>> <<set>>
+    + Name : string? <<get>> <<set>>
+}
+ResponseObj --> "StatusCode" HttpStatusCode
+@enduml

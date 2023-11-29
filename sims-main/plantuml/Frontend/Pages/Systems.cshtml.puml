@@ -1,0 +1,11 @@
+@startuml
+class SystemModel {
+    + OnGet() : IActionResult
+}
+class "List`1"<T> {
+}
+PageModel <|-- SystemModel
+SystemModel --> "systems<SIMS_Frontend.Classes.System>" "List`1"
+SystemModel --> "systemtypes<Systemtype>" "List`1"
+SystemModel --> "manufactors<Manufactor>" "List`1"
+@enduml

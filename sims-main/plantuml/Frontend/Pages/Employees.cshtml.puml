@@ -1,0 +1,9 @@
+@startuml
+class EmployeesModel {
+    + OnGet() : IActionResult
+}
+class "List`1"<T> {
+}
+PageModel <|-- EmployeesModel
+EmployeesModel --> "employees<Employee>" "List`1"
+@enduml

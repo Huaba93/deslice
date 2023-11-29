@@ -1,0 +1,33 @@
+@startuml
+class SystemService {
+    + {static} GetSystems(authToken:string) : SystemReturnObj
+}
+class SystemReturnObj {
+    + Statuscode : int <<get>> <<set>> = 200
+    + Message : string? <<get>> <<set>>
+    + Systems : List<System>? <<get>> <<set>>
+    + Systemtypes : List<Systemtype>? <<get>> <<set>>
+    + Manufactors : List<Manufactor>? <<get>> <<set>>
+    + SystemReturnObj()
+    + SystemReturnObj(statuscode:int)
+    + SystemReturnObj(statuscode:int, systems:List<System>)
+}
+class System {
+    + SystemId : int <<get>> <<set>>
+    + Hostname : string? <<get>> <<set>>
+    + ManufactorID : int <<get>> <<set>>
+    + SystemtypeID : int <<get>> <<set>>
+    + SerialNumber : string? <<get>> <<set>>
+    + IpAddress : string? <<get>> <<set>>
+    + Location : string? <<get>> <<set>>
+    + Criticality : int? <<get>> <<set>>
+}
+class Systemtype {
+    + SystemTypeId : int <<get>> <<set>>
+    + Name : string <<get>> <<set>>
+}
+class Manufactor {
+    + ManufactorId : int <<get>> <<set>>
+    + Name : string <<get>> <<set>>
+}
+@enduml

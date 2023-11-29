@@ -1,0 +1,7 @@
+@startuml
+class RoleController {
+    + Get() : List<Role>
+    + CreateRole(role:Role) : IActionResult
+}
+ControllerBase <|-- RoleController
+@enduml

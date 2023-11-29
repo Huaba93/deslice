@@ -1,0 +1,9 @@
+@startuml
+class AdminLteModel {
+    + OnGet() : IActionResult
+}
+class "List`1"<T> {
+}
+PageModel <|-- AdminLteModel
+AdminLteModel o-> "notifications<Notification>" "List`1"
+@enduml

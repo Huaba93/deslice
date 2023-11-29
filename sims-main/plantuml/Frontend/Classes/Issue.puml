@@ -1,0 +1,34 @@
+@startuml
+class IssueService {
+    + {static} GetIssues(authToken:string) : IssueReturnObj
+    + {static} PostIssue(authToken:string, issue:Issue) : ResponseObj
+}
+class Issue {
+    + IssueID : int <<get>> <<set>>
+    + CVE : string? <<get>> <<set>>
+    + CvssBaseScore : decimal <<get>> <<set>>
+    + Cvss : string? <<get>> <<set>>
+    + Description : string? <<get>> <<set>>
+    + ClosedTime : DateTime? <<get>> <<set>>
+    + ReportedEmployeeID : int <<get>> <<set>>
+    + AssignedEmployeeID : int? <<get>> <<set>>
+}
+class IssueReturnObj {
+    + Statuscode : int <<get>> <<set>> = 200
+    + Message : string <<get>> <<set>>
+    + Issue : List<Issue>? <<get>> <<set>>
+    + Employees : List<Employee>? <<get>> <<set>>
+    + IssueReturnObj()
+    + IssueReturnObj(statuscode:int)
+}
+enum Status {
+    Open= 0,
+    InProgress= 1,
+    Workaround= 2,
+    Closed= 4,
+}
+Issue --> "ReportedTime" DateTime
+Issue o-> "ReportedEmployee" Employee
+Issue o-> "AssignedEmployee" Employee
+Issue +-- Status
+@enduml

@@ -1,0 +1,7 @@
+@startuml
+class DashboardModel {
+    + Username : string <<get>> <<set>>
+    + OnGet() : IActionResult
+}
+PageModel <|-- DashboardModel
+@enduml

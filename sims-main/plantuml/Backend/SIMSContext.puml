@@ -1,0 +1,14 @@
+@startuml
+class SIMSContext {
+}
+class "DbSet`1"<T> {
+}
+DbContext <|-- SIMSContext
+SIMSContext --> "Issues<Issue>" "DbSet`1"
+SIMSContext --> "Employees<Employee>" "DbSet`1"
+SIMSContext --> "Systems<System>" "DbSet`1"
+SIMSContext --> "Systemtypes<Systemtype>" "DbSet`1"
+SIMSContext --> "Manufactors<Manufactor>" "DbSet`1"
+SIMSContext --> "Logs<Logs>" "DbSet`1"
+SIMSContext --> "Notifications<Notification>" "DbSet`1"
+@enduml

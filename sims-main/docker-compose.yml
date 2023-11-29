@@ -1,0 +1,83 @@
+version: '3.4'
+
+services:
+   database_backend:
+      hostname: backendDb
+      image: mcr.microsoft.com/azure-sql-edge:latest
+      env_file: .settings.env
+      networks:
+        - backend
+      ports: 
+          - 1433:1433
+      volumes: 
+          - ../SIMS_data/backenddb:/var/opt/mssql
+   database_auth:
+      hostname: authDb
+      image: mcr.microsoft.com/azure-sql-edge:latest
+      env_file: .settings.env
+      networks:
+        - auth
+      ports:
+        - 1434:1433
+      volumes:
+        - ../SIMS_data/authdb:/var/opt/mssql
+   auth: 
+      hostname: auth
+      restart: always
+      depends_on: 
+        - database_auth
+      build: ./Authentication
+      env_file: .settings.env
+      ports:
+        - 8080:80
+      networks:
+        - auth
+        - backend
+      links: 
+        - "database_auth:authdb"
+   backend: 
+      hostname: backend
+      restart: always
+      depends_on: 
+        - database_backend
+      build: ./Backend
+      env_file: .settings.env
+      ports:
+        - 8081:80
+      networks:
+        - auth
+        - backend
+        - frontend
+      links: 
+        - "database_backend:backdb"
+
+
+   frontend_redis:
+      hostname: redis
+      image: redis
+      networks: 
+        - frontend
+        
+   frontend:
+     build: ./Frontend
+     ports:
+       - 443:443
+       - 80:80
+     environment: 
+        BackendUrl: "http://backend"
+        AuthUrl: "http://auth"
+        RedisConn: redis:6379
+     networks:
+       - backend
+       - frontend
+
+
+networks:
+  auth:
+    name: "auth"
+
+  backend:
+    name: "backend"
+
+  frontend:
+    name: "frontend"

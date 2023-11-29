@@ -1,0 +1,9 @@
+@startuml
+class AuthContext {
+}
+class "DbSet`1"<T> {
+}
+DbContext <|-- AuthContext
+AuthContext --> "Users<User>" "DbSet`1"
+AuthContext --> "Roles<Role>" "DbSet`1"
+@enduml

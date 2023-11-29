@@ -1,0 +1,16 @@
+﻿@page "/dashboard"
+@model SIMS_Frontend.Pages.DashboardModel
+@{
+    Layout = "_AdminLte";
+}
+
+
+@section Javascript{
+    <script>
+        // Where I Am 
+        var elements = document.querySelectorAll('.nav-link');
+        elements.forEach(element => {
+            element.classList.remove('active');
+        });
+        $("#navbar_dashboard").addClass("active");</script>
+}

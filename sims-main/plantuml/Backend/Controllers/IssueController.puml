@@ -1,0 +1,14 @@
+@startuml
+class IssueController {
+    + Get(id:int) : IActionResult
+    + Get() : List<Issue>
+    + CreateIssue(issue:Issue) : IActionResult
+    + UpdateIssue(id:int, issue:Issue) : IActionResult
+    + DeleteIssue(id:int) : IActionResult
+    + UpdateIssue(id:int) : IActionResult
+    + UpdateIssue(id:int, employeeid:int) : IActionResult
+    + UpdateIssueAffectedSystems(id:int, affectedSystems:int[]) : IActionResult
+    + UpdateIssueEscalate(id:int) : IActionResult
+}
+ControllerBase <|-- IssueController
+@enduml

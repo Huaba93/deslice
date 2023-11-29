@@ -1,0 +1,26 @@
+@startuml
+class User {
+    + UserID : int <<get>> <<set>>
+    + Firstname : string <<get>> <<set>>
+    + Lastname : string <<get>> <<set>>
+    + Username : string <<get>> <<set>>
+    + Password : string <<get>> <<set>>
+    + RoleID : int <<get>> <<set>>
+    + Role : Role? <<get>>
+    + Name : string <<get>>
+}
+class UserDTO {
+    + Firstname : string <<get>> <<set>>
+    + Lastname : string <<get>> <<set>>
+    + Username : string <<get>> <<set>>
+    + RoleID : int <<get>> <<set>>
+}
+class CreateUserDTO {
+    + Password : string <<get>> <<set>>
+}
+class Auth {
+    + Username : string <<get>> <<set>> = ""
+    + Password : string <<get>> <<set>> = ""
+}
+UserDTO <|-- CreateUserDTO
+@enduml

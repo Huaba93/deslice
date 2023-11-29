@@ -1,0 +1,17 @@
+@startuml
+class Notification {
+    + NotificationId : int <<get>> <<set>>
+    + Title : string <<get>> <<set>>
+    + Message : string <<get>> <<set>>
+    + Notified : bool <<get>> <<set>> = false
+    + NotifyUID : int <<get>> <<set>>
+    + Notification(title:string, message:string, notifyUID:int)
+    + {static} convertCreationObj(creationObj:NotificationCreation) : Notification
+}
+class NotificationCreation {
+    + Title : string <<get>> <<set>>
+    + Message : string <<get>> <<set>>
+    + NotifyUID : int <<get>> <<set>>
+}
+Notification o-> "MessageCreationTime" DateTime
+@enduml

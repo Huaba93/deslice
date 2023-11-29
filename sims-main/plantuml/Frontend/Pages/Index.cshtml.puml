@@ -1,0 +1,13 @@
+@startuml
+class IndexModel {
+    + FailedLogin : bool <<get>> <<set>>
+    + OnGet() : IActionResult
+    + OnPost() : IActionResult
+}
+class UserModel {
+    + Username : string <<get>> <<set>>
+    + Password : string <<get>> <<set>>
+}
+PageModel <|-- IndexModel
+PageModel <|-- UserModel
+@enduml

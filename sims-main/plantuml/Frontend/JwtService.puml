@@ -1,0 +1,5 @@
+@startuml
+class JwtService {
+    + {static} GetUserIdFromToken(jwtToken:string) : int
+}
+@enduml

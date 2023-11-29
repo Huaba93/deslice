@@ -1,0 +1,10 @@
+@startuml
+class Backend {
+    + Backend()
+    + {static} GetJsonFromBackend(url:string, authToken:string) : string
+    + {static} GetBackendServiceURL() : string
+    + {static} PostBackendService(jsonObject:string, PostUri:string, authToken:string?) : ResponseObj
+    + {static} GetBackendService(GetUri:string, authToken:string?) : HttpResponseMessage
+    + {static} GetAuthToken(Username:string, Password:string) : ResponseObj
+}
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+class System {
+    + SystemId : int <<get>> <<set>>
+    + Hostname : string <<get>> <<set>>
+    + ManufactorID : int <<get>> <<set>>
+    + Manufactor : Manufactor? <<get>>
+    + SystemtypeID : int <<get>> <<set>>
+    + Systemtype : Systemtype? <<get>>
+    + SerialNumber : string? <<get>> <<set>>
+    + IpAddress : string? <<get>> <<set>>
+    + Location : string? <<get>> <<set>>
+    + Criticality : int? <<get>> <<set>>
+}
+class Systemtype {
+    + SystemTypeId : int <<get>> <<set>>
+    + Name : string <<get>> <<set>>
+}
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+class Employee {
+    + EmployeeID : int <<get>> <<set>>
+    + UID : string <<get>> <<set>>
+    + FirstName : string <<get>> <<set>>
+    + LastName : string <<get>> <<set>>
+    + Mail : string <<get>> <<set>>
+    + Phone : string <<get>> <<set>>
+    + SuperiorID : int? <<get>> <<set>>
+}
+@enduml

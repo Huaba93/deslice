@@ -1,0 +1,7 @@
+@startuml
+class AuthController {
+    + AuthUser(auth:Auth) : IActionResult
+    + GetPublicKey() : IActionResult
+}
+ControllerBase <|-- AuthController
+@enduml

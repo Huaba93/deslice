@@ -1,0 +1,7 @@
+@startuml
+class DefaultModel {
+    + Username : string <<get>> <<set>>
+    + OnGet() : IActionResult
+}
+PageModel <|-- DefaultModel
+@enduml

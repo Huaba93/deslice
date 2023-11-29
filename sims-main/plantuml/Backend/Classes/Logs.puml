@@ -1,0 +1,17 @@
+@startuml
+class Logs {
+    + ID : int <<get>> <<set>>
+    + Severity : int <<get>> <<set>> = 3
+    + Source : string <<get>> <<set>> = "Backend"
+    + UserID : string? <<get>> <<set>>
+    + Logtext : string <<get>> <<set>> = ""
+    + Logs()
+    + Logs(Severity:int, Source:string, UserID:string, Logtext:string)
+    + Logs(Severity:int, Source:string, Logtext:string)
+    + Logs(Logtext:string)
+}
+class Logservice {
+    + {static} writeLog(Severity:int?, Source:string?, UserID:string?, Logtext:string) : void
+}
+Logs o-> "Created" DateTime
+@enduml
